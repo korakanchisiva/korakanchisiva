@@ -32,6 +32,7 @@ public class PaymentDaoImpl implements PaymentDao
 			{
 				Session session = factory.openSession();
 				Transaction tx = session.beginTransaction();
+				System.out.println("siva");
 				session.save(cheque);
 				tx.commit();
 				session.close();
