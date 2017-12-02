@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+	<hibernate-mapping package = "com.sathya.hibernate.model">
+		<class name= "Payment" table = "payments">
+		<id name = "txId" length = "10"/>
+		<discriminator column="pmode" type="string" length="3">	</discriminator>
+		<property name="amount"/>
+		<property name="txDate" column="txDate" type = "date"/>
+		<subclass name="Card" discriminator-value="cc">
+			<property name="cardNo"/>
+			<property name="cardType" column="ctype" length ="10"/>		
+		</subclass>
+		<subclass name="Cheque" discriminator-value="ch">
+			<property name="chequeNo" column="chNo"/>
+			<property name="chequeType" column="chtype" length = "10"/>
+		</subclass>
+		</class>
+	</hibernate-mapping>
+	
